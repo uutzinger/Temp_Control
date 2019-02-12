@@ -82,8 +82,8 @@ const int KdAddress = 24;
 PID myPID(&Input, &Output, &Setpoint, Kp, Ki, Kd, DIRECT);
 
 // 5 second Time Proportional Output window
-int WindowSize = 5000; 
-unsigned long windowStartTime;
+volatile int WindowSize = 5000; 
+volatile unsigned long windowStartTime;
 
 // ************************************************
 // Auto Tune Variables and constants
@@ -107,7 +107,7 @@ long      currentTime = 0;
 // States for state machine
 // ************************************************
 
-enum operatingState { STARTUP = 0, RUN, INPUT_HANDLE, STATUS, OFF};
+volatile enum operatingState { STARTUP = 0, RUN, INPUT_HANDLE, STATUS, OFF};
 operatingState opState = OFF;
 
 IntervalTimer myTimer;
@@ -118,8 +118,8 @@ IntervalTimer myTimer;
 
 void setup()
 {
- Serial.begin(115200);
- Serial.println("417 - 517 Temperature Controller");
+   Serial.begin(115200);
+   Serial.println("417 - 517 Temperature Controller");
    Serial.println("================================");
    Serial.println("Setting up...");
 
