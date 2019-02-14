@@ -107,8 +107,8 @@ long      currentTime = 0;
 // States for state machine
 // ************************************************
 
-volatile enum operatingState { STARTUP = 0, RUN, INPUT_HANDLE, STATUS, OFF};
-operatingState opState = OFF;
+enum operatingState { STARTUP = 0, RUN, INPUT_HANDLE, STATUS, OFF};
+volatile operatingState opState = OFF;
 
 IntervalTimer myTimer;
 
